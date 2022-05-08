@@ -13,21 +13,21 @@ class PostListView(ListView):
     paginate_by = 3
     template_name = 'blog/post/list.html'
     
-def post_list(request):
-#    posts = Post.published.all()
-    object_list = Post.published.all()
-    paginator = Paginator(object_list, 3) # 3 posts in each page
-    page = request.GET.get('page')
-    try:
-        posts = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer deliver the first page
-        posts = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range deliver last page of results
-        posts = paginator.page(paginator.num_pages)
+# def post_list(request):
+# #    posts = Post.published.all()
+#     object_list = Post.published.all()
+#     paginator = Paginator(object_list, 3) # 3 posts in each page
+#     page = request.GET.get('page')
+#     try:
+#         posts = paginator.page(page)
+#     except PageNotAnInteger:
+#         # If page is not an integer deliver the first page
+#         posts = paginator.page(1)
+#     except EmptyPage:
+#         # If page is out of range deliver last page of results
+#         posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'blog/post/list.html', {'page': page, 'posts': posts})
+#     return render(request, 'blog/post/list.html', {'page': page, 'posts': posts})
 
 
 def post_detail(request, year, month, day, post):
@@ -59,4 +59,4 @@ def post_share(request, post_id):
     else:
         form = EmailPostForm()
     
-    return render(request, 'blog/post/share.html', {'post': post,'form': form, 'sent': sent})
+    return render(request, 'blog/post/share_form.html', {'post': post,'form': form, 'sent': sent})
