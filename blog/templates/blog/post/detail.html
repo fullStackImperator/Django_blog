@@ -26,6 +26,7 @@
             <p class="info">
                 Comment {{ forloop.counter }} by {{ comment.name }}
                 {{ comment.created }}
+                on post {{ comment.post }}
             </p>
         {{ comment.body|linebreaks }}
         </div>
